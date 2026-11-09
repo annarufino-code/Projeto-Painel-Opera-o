@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel de Apontamentos Operacionais</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="cabecalho">
+        <div class="logo">
+            <img src="assets/company-svgrepo-com.svg" alt="Logo da empresa">
+            <h1>Painel Operacional</h1>
+        </div>
+        <button id="btn-login">Entrar</button>
+    </header>
+
+
+    <div class="layout">
+        <aside class="barra-lateral">
+            <div class="perfil">
+                <div id="perfil-operador">?</div>
+                <h3 id="nome-operador">Visitante</h3>
+                <p>Operador</p>
+            </div>
+
+
+            <div class="indicadores">
+                <div>
+                    <span>Meus apontamentos</span>
+                    <strong id="total-apontamentos">0</strong>
+                </div>
+                <div>
+                    <span>Horas trabalhadas</span>
+                    <strong id="total-horas">0h</strong>
+                </div>
+            </div>
+
+
+            <button id="btn-registros" disabled>+ Novo registro</button>
+
+
+            <div class="redes-sociais">
+                <p>Redes sociais</p>
+                <div>
+                    <a href="#"><img src="assets/instagram-logo-thin.svg" alt="Instagram"></a>
+                    <a href="#"><img src="assets/twitter-x-jyw81k7vr85ry57c7ym2d.webp" alt="Twitter"></a>
+                    <a href="#"><img src="assets/linkedin-circle.svg" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </aside>
+
+
+        <main id="area-principal">
+            <section class="introducao">
+                <h2>Apontamentos operacionais</h2>
+                <p>Acompanhe os registros das atividades realizadas pelos operadores.</p>
+            </section>
+
+
+            <section id="formulario-registro" hidden>
+                <h2>Novo apontamento</h2>
+                <form id="form-registro">
+                    <div class="campo">
+                        <label for="tipo-registro">Tipo de atividade</label>
+                        <select id="tipo-registro" required>
+                            <option value="">Selecione uma atividade</option>
+                            <option value="manutencao">Manutenção</option>
+                            <option value="operacao">Operação</option>
+                            <option value="inspecao">Inspeção</option>
+                        </select>
+                        <small class="erro"></small>
+                    </div>
+
+
+                    <div class="campo">
+                        <label for="deslocamento">Distância percorrida (metros)</label>
+                        <input type="number" id="deslocamento" min="1" placeholder="Ex.: 2500" required>
+                        <small class="erro"></small>
+                    </div>
+
+
+                    <div class="campo">
+                        <label for="tempo-execucao">Tempo de execução (minutos)</label>
+                        <input type="number" id="tempo-execucao" min="1" placeholder="Ex.: 90" required>
+                        <small class="erro"></small>
+                    </div>
+
+
+                    <button type="submit" id="btn-criar-registro">Criar registro</button>
+                </form>
+            </section>
+
+
+            <section class="filtros">
+                <button class="filtro-btn ativo" data-categoria="todos">Todos</button>
+                <button class="filtro-btn" data-categoria="manutencao">Manutenção</button>
+                <button class="filtro-btn" data-categoria="operacao">Operação</button>
+                <button class="filtro-btn" data-categoria="inspecao">Inspeção</button>
+            </section>
+
+
+            <section id="lista-registros"></section>
+
+
+            <nav class="paginacao">
+                <button id="primeira-pagina">«</button>
+                <button id="pagina-anterior">‹</button>
+                <span id="numeros-paginas"></span>
+                <button id="pagina-proxima">›</button>
+                <button id="ultima-pagina">»</button>
+            </nav>
+        </main>
+    </div>
+
+
+    <div id="modal-login" class="modal-overlay" hidden>
+        <div class="modal">
+            <button id="fechar-modal" class="fechar-modal" type="button">×</button>
+            <h2>Acesso ao painel</h2>
+            <p>Entre com seus dados para acessar as funcionalidades.</p>
+
+
+            <form id="form-login">
+                <div class="campo">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail" required>
+                    <small id="erro-email" class="erro"></small>
+                </div>
+
+
+                <div class="campo">
+                    <label for="senha">Senha</label>
+                    <input type="password" id="senha" placeholder="Digite sua senha" required>
+                    <small id="erro-senha" class="erro"></small>
+                </div>
+
+
+                <button type="button" id="btn-cancelar">Cancelar</button>
+                <button type="submit" id="btn-entrar">Entrar</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
